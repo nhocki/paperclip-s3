@@ -1,0 +1,15 @@
+h1. Paperclip S3 Storage
+
+This gem will force paperclip to store attachments on S3. It's great for "Heroku":http://heroku.com apps and thats basically why I wrote it.
+
+I was really lazy writing this over and over again, so I just gemed it.
+
+h1. Important Notes
+
+If you're in fact using "Heroku":http://heroku.com, and you want the attachments to have custom paths. *PLEASE* do not use *RAILS_ROOT*. Why? Every time you deploy your app to "Heroku":http://heroku.com, you're changing the RAILS_ROOT, so all your uploaded files will be lost and your bucket *WILL* be a mess!
+
+A default, Heroku-working path is on by default, so you can just use it.
+
+h2. Contribute
+
+Feel free to fork, fix/patch/extend this. Everything is welcome.
