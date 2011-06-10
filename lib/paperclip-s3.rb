@@ -22,4 +22,4 @@ module Zinergia
   end
 end
 
-ActiveRecord::Base.send(:extend, Zinergia::Paperclip::S3) if Rails.env.production?
+ActiveRecord::Base.send(:extend, Zinergia::Paperclip::S3)
