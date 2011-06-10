@@ -1,8 +1,9 @@
+require 'paperclip'
 require "paperclip-s3/version"
 
-module Paperclip
-  module S3
-    module Zinergia
+module Zinergia
+  module Paperclip
+    module S3    
       # Extends the paperclips has_attached_file method
       # It will use S3 Storage. The credentials will be read from the environment
       def has_attached_file(name, options = {})
@@ -21,4 +22,4 @@ module Paperclip
   end
 end
 
-ActiveRecord::Base.send :extend, Paperclip::S3::Zinergia if Rails.env.production?
+ActiveRecord::Base.send(:extend, Zinergia::Paperclip::S3) if Rails.env.production?
