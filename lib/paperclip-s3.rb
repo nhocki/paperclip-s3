@@ -7,6 +7,9 @@ module Zinergia
       # Extends the paperclips has_attached_file method
       # It will use S3 Storage. The credentials will be read from the environment
       def has_attached_file(name, options = {})
+        
+        ActiveRecord::Base.logger.error {"\n\n\n#################################### Hello from S3 Gem"}
+        
         options[:storage] ||= :s3
         options[:path]    ||= "/:class-:attachment/:id/:style-:basename.:extension"
         options[:bucket]  ||= ENV["S3_BUCKET"]
