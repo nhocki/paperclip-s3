@@ -1,10 +1,6 @@
-h2. Works only for Rails 3 (for now)
-
 h1. Paperclip S3 Storage
 
-This gem will force paperclip to store attachments on S3. It's great for "Heroku":http://heroku.com apps and thats basically why I wrote it.
-
-I was really lazy writing this over and over again, so I just gemed it.
+This gem will force paperclip to store attachments on S3 if your application is in production. It's great for "Heroku":http://heroku.com apps.
 
 h1. Important Notes
 
@@ -12,6 +8,32 @@ If you're in fact using "Heroku":http://heroku.com, and you want the attachments
 
 A default, Heroku-working path is on by default, so you can just use it.
 
+h1. How to Use
+
+This gem will read your S3 credentials from the server's environment. You will need to provide a secret key, an access key and a bucket. (You can provide an *_s3_credentials_* hash options with *_access_key_id_* and *_secret_access_key_* instead.)
+
+If you are using "Heroku":http://heroku.com, it's really easy to do this, just
+
+<pre>
+  heroku config:add S3_BUCKET=your_bucket_name
+  heroku config:add S3_KEY=your_access_key
+  heroku config:add S3_SECRET=your_secret_key
+</pre>
+
+Ok, if you're really lazy, you can do that in one line:
+
+<pre>
+  heroku config:add S3_BUCKET=your_bucket_name S3_KEY=your_access_key S3_SECRET=your_secret_key
+</pre>
+
+After you've done this, you can use paperclip normally. The gem just extends this methods and changes the options to force the S3 Storage. You can *even* use the same options (like path, default_style, etc.)
+
+
+
 h2. Contribute
 
 Feel free to fork, fix/patch/extend this. Everything is welcome.
+
+h3. TODO
+
+* Clean the Railtie, specially the Rails.env part.
