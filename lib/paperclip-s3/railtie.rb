@@ -15,8 +15,8 @@ module Paperclip
       def self.insert
         if (defined?(Rails.env) && Rails.env && Rails.env.production?) or
            (defined?(RAILS_ENV) && RAILS_ENV && RAILS_ENV =~ /production/)
-           
               ActiveRecord::Base.send(:include, Paperclip::S3::Glue)
+        end
       end 
     end
   end
