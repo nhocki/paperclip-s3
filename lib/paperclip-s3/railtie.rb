@@ -13,7 +13,7 @@ module Paperclip
 
     class Railtie
       def self.insert
-        ActiveRecord::Base.send(:extend, Paperclip::S3::ClassMethods)
+        ActiveRecord::Base.send(:include, Paperclip::S3::Glue)
       end 
     end
   end
