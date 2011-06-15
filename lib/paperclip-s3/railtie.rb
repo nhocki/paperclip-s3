@@ -13,7 +13,10 @@ module Paperclip
 
     class Railtie
       def self.insert
-        ActiveRecord::Base.send(:include, Paperclip::S3::Glue)
+        if (defined?(Rails.root) && Rails.root && Rails.root.production?) or
+           (defined?(RAILS_ROOT) && RAILS_ROOT && RAILS_ROOT =~ /production/)
+           
+              ActiveRecord::Base.send(:include, Paperclip::S3::Glue)
       end 
     end
   end
