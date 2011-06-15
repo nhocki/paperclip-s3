@@ -23,4 +23,4 @@ module Zinergia
   end
 end
 
-ActiveRecord::Base.send(:extend, Zinergia::Paperclip::S3)
+Paperclip::ClassMethods.send(:extend, Zinergia::Paperclip::S3)
