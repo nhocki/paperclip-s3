@@ -1,15 +1,16 @@
+require 'rails'
 require 'paperclip'
-require "paperclip-s3/version"
+require 'paperclip-s3/version'
+require 'paperclip-s3/railtie'
 
-module Zinergia
-  module Paperclip
-    module S3    
+
+module Paperclip
+  module S3    
+    module ClassMethods
       # Extends the paperclips has_attached_file method
       # It will use S3 Storage. The credentials will be read from the environment
       def has_attached_file(name, options = {})
-        
         ActiveRecord::Base.logger.error {"\n\n\n#################################### Hello from S3 Gem"}
-        
         options[:storage] = :s3
         options[:path]    = "/:class-:attachment/:id/:style-:basename.:extension"
         options[:bucket]  = ENV["S3_BUCKET"]
@@ -22,5 +23,3 @@ module Zinergia
     end
   end
 end
-
-Paperclip::ClassMethods.send(:extend, Zinergia::Paperclip::S3)
