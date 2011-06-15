@@ -1,2 +1,1 @@
-require 'paperclip-s3/railtie'
-Paperclip::S3::Railtie.insert
+require File.join(File.dirname(__FILE__), "lib", "paperclip-s3")
