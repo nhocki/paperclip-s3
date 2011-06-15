@@ -1,5 +1,4 @@
-h1. THIS IS NOT WORKING (YET)!
-
+h2. Works only for Rails 3 (for now)
 
 h1. Paperclip S3 Storage
 

@@ -1,4 +1,3 @@
-require 'rails'
 require 'paperclip'
 require 'paperclip-s3/version'
 require 'paperclip-s3/railtie'

@@ -1,6 +1,7 @@
 module Paperclip
   module S3
     if defined? Rails::Railtie # Don't break rails 2.x
+      require 'rails'
       class Railtie < Rails::Railtie
         initializer 'paperclip.force_s3_attachment_on_production' do
           ActiveSupport.on_load :active_record do
