@@ -7,7 +7,7 @@ module Paperclip
           ActiveSupport.on_load :active_record do
             Paperclip::S3::Railtie.insert
           end
-        end      
+        end
       end
     end
 
@@ -22,7 +22,7 @@ module Paperclip
         end
 
         ActiveRecord::Base.send(:include, Paperclip::S3::Glue) if in_production
-      end 
+      end
     end
   end
 end
