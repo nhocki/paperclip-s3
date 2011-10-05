@@ -7,17 +7,22 @@ module Paperclip
           ActiveSupport.on_load :active_record do
             Paperclip::S3::Railtie.insert
           end
-        end      
+        end
       end
     end
 
     class Railtie
       def self.insert
-        if (defined?(Rails.env) && Rails.env && Rails.env.production?) or
-           (defined?(RAILS_ENV) && RAILS_ENV && RAILS_ENV =~ /production/)
-              ActiveRecord::Base.send(:include, Paperclip::S3::Glue)
+        in_production = false
+
+        if (defined?(Rails.env) && Rails.env)
+          in_production = Rails.env.production?
+        elsif (defined?(RAILS_ENV) && RAILS_ENV)
+          in_production = RAILS_ENV =~ /production/
         end
-      end 
+
+        ActiveRecord::Base.send(:include, Paperclip::S3::Glue) if in_production
+      end
     end
   end
 end
