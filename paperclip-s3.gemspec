@@ -15,7 +15,9 @@ Gem::Specification.new do |s|
 
   s.add_dependency('paperclip', '~> 2.4')
   s.add_dependency('aws-s3', '~> 0.6.2')
-  
+
+  s.add_development_dependency('rake', '~> 0.9.2')
+
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
