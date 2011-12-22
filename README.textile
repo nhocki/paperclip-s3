@@ -20,20 +20,16 @@ If you are using "Heroku":http://heroku.com, it's really easy to do this, just
   heroku config:add S3_SECRET=your_secret_key
 </pre>
 
-Ok, if you're really lazy, you can do that in one line:
+If you are using *https* as the S3 Protocol, you can also specify it as a Heroku environment variable.
 
 <pre>
-  heroku config:add S3_BUCKET=your_bucket_name S3_KEY=your_access_key S3_SECRET=your_secret_key
+  heroku config:add S3_PROTOCOL=https
 </pre>
 
+`Notice that the S3 protocol will default to *http*`
+
 After you've done this, you can use paperclip normally. The gem just extends this methods and changes the options to force the S3 Storage. You can *even* use the same options (like path, default_style, etc.)
-
-
 
 h2. Contribute
 
 Feel free to fork, fix/patch/extend this. Everything is welcome.
-
-h3. TODO
-
-* Clean the Railtie, specially the Rails.env part.
