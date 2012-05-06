@@ -14,11 +14,11 @@ module Paperclip
     class Railtie
       def self.insert
         in_production = false
-
+        s3_environments = ENV['S3_ENVIRONMENTS'] || ['production']
         if (defined?(Rails.env) && Rails.env)
-          in_production = Rails.env.production?
+          in_production = s3_environments.include?(Rails.env)
         elsif (defined?(RAILS_ENV) && RAILS_ENV)
-          in_production = RAILS_ENV =~ /production/
+          in_production = s3_environments.grep(RAILS_ENV)
         end
 
         ActiveRecord::Base.send(:include, Paperclip::S3::Glue) if in_production
