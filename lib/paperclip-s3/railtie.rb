@@ -14,7 +14,7 @@ module Paperclip
     class Railtie
       def self.insert
         in_production = false
-        s3_environments = ENV['S3_ENVIRONMENTS'] || ['production']
+        s3_environments = ENV['S3_ENVIRONMENTS'] ? ENV['S3_ENVIRONMENTS'].split(',') : ['production']
         if (defined?(Rails.env) && Rails.env)
           in_production = s3_environments.include?(Rails.env)
         elsif (defined?(RAILS_ENV) && RAILS_ENV)
