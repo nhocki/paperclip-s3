@@ -28,7 +28,13 @@ If you are using *https* as the S3 Protocol, you can also specify it as a Heroku
 
 `Notice that the S3 protocol will default to *http*`
 
-After you've done this, you can use paperclip normally. The gem just extends this methods and changes the options to force the S3 Storage. You can *even* use the same options (like path, default_style, etc.)
+You can optionally specify which environments will use S3 with the S3_ENVIRONMENTS variable (using a comma-separated list). 
+
+<pre>
+  ENV['S3_ENVIRONMENTS'] = 'staging,production' # defaults to production only
+</pre>
+
+After you've done this, you can use paperclip normally. The gem just extends the methods and changes the options to force the S3 Storage. You can *even* use the same options (like path, default_style, etc.)
 
 h2. Contribute
 
