@@ -1,18 +1,27 @@
 h2. Paperclip S3 Storage
 
-This gem will force paperclip to store attachments on S3 if your application is in production. It's great for "Heroku":http://heroku.com apps.
+This gem will force paperclip to store attachments on S3 if your application is
+in production. It's great for "Heroku":http://heroku.com apps.
 
 h2. Important Notes
 
-If you're in fact using "Heroku":http://heroku.com, and you want the attachments to have custom paths. *PLEASE* do not use *RAILS_ROOT*. Why? Every time you deploy your app to "Heroku":http://heroku.com, you're changing the RAILS_ROOT, so all your uploaded files will be lost and your bucket *WILL* be a mess!
+If you're in fact using "Heroku":http://heroku.com, and you want the
+attachments to have custom paths. *PLEASE* do not use *RAILS_ROOT*. Why? Every
+time you deploy your app to "Heroku":http://heroku.com, you're changing the
+RAILS_ROOT, so all your uploaded files will be lost and your bucket *WILL* be a mess!
 
-A default, Heroku-working path is on by default, so you can just use it.
+A default, Heroku-working path is default.
 
 h2. How to Use
 
-Add the gem to your Gemfile with <pre>gem "paperclip-s3"</pre> and run <pre>bundle install</pre>.
+Add the gem to your Gemfile with <pre>gem "paperclip-s3"</pre> and run
+<pre>bundle install</pre>.
 
-Then, you'll need to setup some ENV variables. You will need to provide a secret key, an access key and a bucket. (You can provide an *_s3_credentials_* hash options with *_access_key_id_* and *_secret_access_key_* instead.)
+Then, you'll need to setup some ENV variables. You will need to provide a secret
+key, an access key and a bucket.
+
+You can provide an *_s3_credentials_* hash options with *_access_key_id_* and
+*_secret_access_key_* instead.
 
 If you are using "Heroku":http://heroku.com, you can use the <pre>config:add</pre> command:
 
@@ -30,13 +39,16 @@ If you are using *https* as the S3 Protocol, you can also specify it as a Heroku
 
 <b>Notice that the S3 protocol will default to http</b>
 
-You can optionally specify which environments will use S3 with the S3_ENVIRONMENTS variable (using a comma-separated list).
+You can optionally specify which environments will use S3 with the
+<pre>S3_ENVIRONMENTS</pre> variable (using a comma-separated list).
 
 <pre>
   ENV['S3_ENVIRONMENTS'] = 'staging,production' # defaults to production only
 </pre>
 
-*After you've done this, you can use paperclip normally*. The gem just extends the methods and changes the options to force the S3 Storage. You can *even* use the same options (like path, default_style, etc.)
+*After you've done this, you can use paperclip normally*. The gem just extends
+the methods and changes the options to force the S3 Storage. You can *even* use
+the same options (like path, default_style, etc.)
 
 <pre>
   class User < ActiveRecord::Base
