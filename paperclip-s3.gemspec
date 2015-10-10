@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "paperclip-s3"
 
-  s.add_dependency('paperclip', '~> 2.4')
+  s.add_dependency('paperclip', '~> 4.3')
   s.add_dependency('aws-sdk', '~> 1.2.5')
 
   s.add_development_dependency('rake', '~> 0.9.2')
