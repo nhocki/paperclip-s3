@@ -1,3 +1,9 @@
+h1. This is no longer maintained!!
+
+h3. Use "Paperclip's Defaults":https://github.com/thoughtbot/paperclip#defaults instead.
+
+----
+
 h2. Paperclip S3 Storage
 
 This gem will force paperclip to store attachments on S3 if your application is
